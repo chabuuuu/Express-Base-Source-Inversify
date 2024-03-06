@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import { IService } from "./i.service";
-import { IRepository } from "../../reposiroty/base/base.repository.ts/i.repository";
+import { IRepository } from "../../repository/base/base.repository.ts/i.repository";
 import { ITYPES } from "../../types/interface.types";
 import "reflect-metadata";
 @injectable()

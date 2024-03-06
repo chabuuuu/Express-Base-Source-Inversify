@@ -14,6 +14,12 @@ const morganFormat = config.get('morganFormat');
 const app = express();
 
 //Middleware
+app.use(
+  express.urlencoded({
+      extended: true,
+  }),
+);
+app.use(express.json());
 app.use(morgan(morganFormat || 'dev'))
 app.use(cors(corsOption))
 if (useHelmet) {
