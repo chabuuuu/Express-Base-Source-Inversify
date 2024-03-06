@@ -1,22 +1,27 @@
 # Example How To Use Inversify To Apply Dependency Injection On ExpressJS
 
-- Flow: Controller --> Service --> Repository
+- Flow: Controller --> Service --> Repository --> TypeORM Entity
 
 - We combine all dependency in "container", then resolve and export the controller to use in routes
 
+ORM: TypeORM
+DB: PostgreSQL
+
 ## Usage
+
+### Development:
 ```
-npm run dev
+npm run start:dev
 ```
 
+### Build JS:
 ```
-curl http://localhost:3000/ticket
+npm run build
 ```
-Flow: TicketController.findOne --> TicketService.findOne --> TicketRepository.findOne --> Model.Ticket
 
-Result:
-```
-Hello from ticket controller
-Hello from ticket service
-Hello from ticket repository
-```# Express-Base-Source-Inversify
+## How to create new API Endpoint:
+### 1. Create new Entity Class in src/models
+### 2. Create new repository in src/repository
+### 3. Create new Serviec in src/service
+### 4. Combine all to container in src/container
+### 5. Create new route in src/route
