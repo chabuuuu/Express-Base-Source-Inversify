@@ -1,5 +1,5 @@
+import { Role } from "@/models/role.model";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Role } from "./role.model";
 
 @Entity()
 export class Account {

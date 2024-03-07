@@ -1,7 +1,8 @@
+import { IController } from "@/controller/base/i.controller";
+import { IService } from "@/service/base/i.service";
+import { ITYPES } from "@/types/interface.types";
 import { inject, injectable } from "inversify";
-import { IController } from "./i.controller";
-import { IService } from "../../service/base/i.service";
-import { ITYPES } from "../../types/interface.types";
+
 
 @injectable()
 export class BaseController implements IController<any>{

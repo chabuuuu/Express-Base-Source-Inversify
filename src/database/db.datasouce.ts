@@ -1,7 +1,7 @@
+import { Account } from "@/models/account.model"
+import { Role } from "@/models/role.model"
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Account } from "../models/account.model"
-import { Role } from "../models/role.model"
 
 export const AppDataSource = new DataSource({
     type: "postgres",

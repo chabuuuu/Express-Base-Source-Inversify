@@ -1,5 +1,5 @@
+import { IRepository } from "@/repository/base/i.repository";
 import { injectable } from "inversify";
-import { IRepository } from "./i.repository";
 import "reflect-metadata";
 @injectable()
 export class BaseRepository<T extends any> implements IRepository<T> {
