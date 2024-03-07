@@ -1,8 +1,8 @@
 import { injectable } from "inversify";
-import { BaseController } from "./base/base.controller";
 import { plainToInstance } from "class-transformer";
-import { CreateAccountDto } from "../dto/account/create-account.dto";
-import { validate, validateOrReject } from "class-validator";
+import { validateOrReject } from "class-validator";
+import { CreateAccountDto } from "@/dto/account/create-account.dto";
+import { BaseController } from "@/controller/base/base.controller";
 
 @injectable()
 export class AccountController extends BaseController{

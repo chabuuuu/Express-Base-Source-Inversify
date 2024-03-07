@@ -1,6 +1,7 @@
-import BaseError from "../utils/error/base.error";
-import accountRouter from "./account/account.route";
-import roleRouter from "./role/role.route";
+import accountRouter from "@/routes/account/account.route";
+import roleRouter from "@/routes/role/role.route";
+import BaseError from "@/utils/error/base.error";
+
 const root_api = '/api/v1';
 export function route (app : any){
     app.use(`${root_api}/account`, accountRouter);

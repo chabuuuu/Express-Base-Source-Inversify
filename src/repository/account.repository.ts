@@ -1,7 +1,7 @@
-import { inject, injectable } from "inversify";
-import { BaseRepository } from "./base/base.repository.ts/base.repository";
-import { ITYPES } from "../types/interface.types";
-import { Account } from "../models/account.model";
+import { Account } from "@/models/account.model";
+import { BaseRepository } from "@/repository/base/base.repository";
+import { ITYPES } from "@/types/interface.types";
+import { inject } from "inversify";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 

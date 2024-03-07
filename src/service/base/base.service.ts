@@ -1,7 +1,7 @@
+import { IRepository } from "@/repository/base/i.repository";
+import { IService } from "@/service/base/i.service";
+import { ITYPES } from "@/types/interface.types";
 import { inject, injectable } from "inversify";
-import { IService } from "./i.service";
-import { IRepository } from "../../repository/base/base.repository.ts/i.repository";
-import { ITYPES } from "../../types/interface.types";
 import "reflect-metadata";
 @injectable()
 export class BaseService implements IService<any>{

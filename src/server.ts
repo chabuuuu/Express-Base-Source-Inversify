@@ -1,10 +1,10 @@
 import 'dotenv/config'
 import express from 'express';
-import { route } from './routes';
 import "reflect-metadata"
-import { AppDataSource } from './database/db.datasouce';
-import { errorHanlder } from './middleware/error.middleware';
 import helmet from 'helmet';
+import { AppDataSource } from '@/database/db.datasouce';
+import { errorHanlder } from '@/middleware/error.middleware';
+import { route } from '@/routes';
 const cors = require('cors')
 const config = require('config');
 const morgan = require('morgan')
