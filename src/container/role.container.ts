@@ -1,6 +1,6 @@
 import { IController } from "@/controller/base/i.controller";
 import { RoleController } from "@/controller/role.controller";
-import { AppDataSource } from "@/database/db.datasouce";
+import { AppDataSource } from "@/database/db.datasource";
 import { Role } from "@/models/role.model";
 import { IRepository } from "@/repository/base/i.repository";
 import { RoleRepository } from "@/repository/role.repository";

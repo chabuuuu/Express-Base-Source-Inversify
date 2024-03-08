@@ -19,6 +19,19 @@ npm run start:dev
 npm run build
 ```
 
+## Migration:
+### Auto genrate migration file to /src/database/migration
+```
+npm run migration:generate
+```
+
+### Apply migration
+```
+npm run migration:start
+```
+
+
+
 ## How to create new API Endpoint:
 ### 1. Create new Entity Class in src/models
 ### 2. Create new repository in src/repository

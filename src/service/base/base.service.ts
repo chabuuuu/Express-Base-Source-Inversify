@@ -9,17 +9,17 @@ export class BaseService implements IService<any>{
     public constructor(@inject(ITYPES.Repository) repository: IRepository<any>) {
         this.repository = repository;
     }
-    create(data: any): Promise<any> {
-        throw new Error("Method not implemented.");
+    async create(data: any): Promise<any> {
+        return await this.repository._create(data);
     }
-    update(params: any): Promise<any> {
-        throw new Error("Method not implemented.");
+    async update(params: any): Promise<any> {
+        return await this.repository._update(params);
     }
-    delete(params: any): Promise<any> {
-        throw new Error("Method not implemented.");
+    async delete(params: any): Promise<any> {
+        return await this.repository._delete(params);
     }
-    findOne(params: any): Promise<any> {
-        throw new Error("Method not implemented.");
+    async findOne(params: any): Promise<any> {
+        return await this.repository._findOne(params);
     }
     async findAll(params: any): Promise<any> {
         return await this.repository._findAll(params);

@@ -2,9 +2,9 @@ import 'dotenv/config'
 import express from 'express';
 import "reflect-metadata"
 import helmet from 'helmet';
-import { AppDataSource } from '@/database/db.datasouce';
 import { errorHanlder } from '@/middleware/error.middleware';
 import { route } from '@/routes';
+import { AppDataSource } from '@/database/db.datasource';
 const cors = require('cors')
 const config = require('config');
 const morgan = require('morgan')
