@@ -1,6 +1,9 @@
 import { IRepository } from "@/repository/base/i.repository";
+import BaseError from "@/utils/error/base.error";
+import { log } from "console";
 import { injectable } from "inversify";
 import "reflect-metadata";
+import { EntityNotFoundError } from "typeorm";
 @injectable()
 export class BaseRepository<T extends any> implements IRepository<T> {
   protected _model;
@@ -8,18 +11,40 @@ export class BaseRepository<T extends any> implements IRepository<T> {
     this._model = model;
   }
   async _update(params: { where: any; data: any }): Promise<any> {
-    const { where, data } = params;
-    return this._model.update(where, data);
+    try {
+      const { where, data } = params;
+      await this._model.findOneByOrFail(where);
+      const result = await this._model.update(where, data);
+      return Object.assign({ updateData: data }, { where: where }, result)
+    } catch (error) {
+      if (error instanceof EntityNotFoundError) {
+        throw new BaseError(404, 'fail', "Entity not found")
+      }
+    }
   }
-  _delete(params: { where: any }): Promise<any> {
-    const { where } = params;
-    return this._model.delete(where);
+  async _delete(params: { where: any }): Promise<any> {
+    try {
+      const { where } = params;
+      const removedEntity = await this._model.findOneByOrFail(where);
+      const result = await this._model.remove(removedEntity);
+      return Object.assign({ deleteData: result }, { where: where })
+    } catch (error) {
+      if (error instanceof EntityNotFoundError) {
+        throw new BaseError(404, 'fail', "Entity not found")
+      }
+      throw error
+    }
+
   }
   async _findOne(params: { where?: any }): Promise<any> {
-    const { where } = params;
-    return await this._model.findOne({
-      where,
-    });
+    try {
+      const { where } = params;
+      return await this._model.findOne({
+        where,
+      });
+    } catch (error) {
+      throw error
+    }
   }
   async _findAll(params: {
     skip?: number;
@@ -27,17 +52,26 @@ export class BaseRepository<T extends any> implements IRepository<T> {
     where?: any;
     order?: any;
   }): Promise<any> {
-    const { skip, take, where, order } = params;
+    try {
+      const { skip, take, where, order } = params;
 
-    return this._model.find({
-      skip,
-      take,
-      where,
-      order,
-    })
+      return this._model.find({
+        skip,
+        take,
+        where,
+        order,
+      })
+    } catch (error) {
+      throw error
+    }
   }
   async _create(params: { data: any }): Promise<any> {
-    const { data } = params;
-    return this._model.create(data);
+    try {
+      const { data } = params;
+      const newInstance = await this._model.create(data);
+      return await this._model.save(newInstance);
+    } catch (error) {
+      throw error
+    }
   }
 }

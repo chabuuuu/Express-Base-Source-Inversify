@@ -1,5 +1,6 @@
-import { Account } from "@/models/account.model"
-import { Role } from "@/models/role.model"
+import 'dotenv/config'
+import { Account } from "../models/account.model"
+import { Role } from "../models/role.model"
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 
@@ -13,5 +14,5 @@ export const AppDataSource = new DataSource({
     entities: [Account, Role],
     synchronize: true,
     logging: false,
-    migrations: [__dirname + "/migrations/*.ts"],
+    migrations: [__dirname + "/migrations/*.js"],
 })

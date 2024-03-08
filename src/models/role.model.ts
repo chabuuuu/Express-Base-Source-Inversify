@@ -1,11 +1,12 @@
 import { Account } from "@/models/account.model";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()
 export class Role {
     @PrimaryGeneratedColumn("uuid")
     id! : string 
 
+    @Index({unique: true})
     @Column("varchar", {length: 30})
     name! : string
 
