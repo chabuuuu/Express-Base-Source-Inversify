@@ -63,5 +63,4 @@ export class BaseController implements IController<any>{
             next(error);
         }
     }
-
 }
