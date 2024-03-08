@@ -16,7 +16,7 @@ export class BaseController implements IController<any>{
         try {
             if (!req.params.id) throw new Error("Id is required");
             const id = req.params.id;
-            const result = await this.service.findOne({ where: { id: Number(id) }});
+            const result = await this.service.findOne({ where: { id: id }});
             res.json(result);
         } catch (error) {
             next(error);
@@ -47,7 +47,7 @@ export class BaseController implements IController<any>{
             if (!req.body) throw new Error("Update data is required");
             const data = req.body;
             const id = req.params.id;
-            const result = await this.service.update({ where: { id: Number(id) }, data });
+            const result = await this.service.update({ where: { id: id }, data });
             res.json(result);
         } catch (error) {
             next(error);
@@ -57,7 +57,7 @@ export class BaseController implements IController<any>{
         try {
             if (!req.params.id) throw new Error("Id is required");
             const id = req.params.id;
-            const result = this.service.delete({ where: { id: Number(id) }});
+            const result = await this.service.delete({ where: { id: id }});
             res.json(result);
         } catch (error) {
             next(error);

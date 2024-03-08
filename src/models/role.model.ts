@@ -10,9 +10,6 @@ export class Role {
     @Column("varchar", {length: 30})
     name! : string
 
-    // @Column("varchar", {length: 100, nullable: true})
-    // description! : string
-
     @OneToMany(() => Account, account => account.role)
     accounts!: Account[]
 }
