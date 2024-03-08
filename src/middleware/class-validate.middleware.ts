@@ -4,8 +4,8 @@ import { validate } from "class-validator";
 
 export const classValidate = (Dto: any) => async (req: any, res: any, next: any) => {
     try {
-        const createAccountDto = plainToInstance(Dto, req.body);
-        const validateErrors = await validate(createAccountDto, { validationError: { target: false, value: false } })
+        const dtoInstance = plainToInstance(Dto, req.body);
+        const validateErrors = await validate(dtoInstance, { validationError: { target: false, value: false } })
         if (validateErrors.length > 0) {
             const formatError = validateErrors.map((error: any) => (
                 Object.values(error.constraints).join(', ')
