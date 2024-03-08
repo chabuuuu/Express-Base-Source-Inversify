@@ -9,6 +9,9 @@ export class Account {
     @ManyToOne(() => Role, role => role.accounts)
     role! : Role
 
+    @Column()
+    roleId!: string
+
     @Column("varchar", {length: 30})
     email! : string
 

@@ -3,7 +3,7 @@ import { IsDateString, IsNotEmpty, IsString, IsStrongPassword } from "class-vali
 export class CreateAccountDto {
     @IsNotEmpty()
     @IsString()   
-    role! : string
+    roleId! : string
 
     @IsNotEmpty()
     @IsString()
