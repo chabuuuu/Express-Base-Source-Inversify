@@ -1,12 +1,10 @@
-import { IRepository } from "@/repository/base/i.repository";
-import { IService } from "@/service/base/i.service";
-import { ITYPES } from "@/types/interface.types";
-import { inject, injectable } from "inversify";
+import { IBaseService } from "@/service/interface/i.base.service";
+import { injectable } from "inversify";
 import "reflect-metadata";
 @injectable()
-export class BaseService implements IService<any>{
-    protected repository: IRepository<any>;
-    public constructor(@inject(ITYPES.Repository) repository: IRepository<any>) {
+export class BaseService implements IBaseService<any>{
+    protected repository: any;
+    public constructor(repository: any) {
         this.repository = repository;
     }
     async create(data: any): Promise<any> {        

@@ -1,11 +1,11 @@
-import { IRepository } from "@/repository/base/i.repository";
+import { IBaseRepository } from "@/repository/interface/i.base.repository";
 import BaseError from "@/utils/error/base.error";
 import { log } from "console";
 import { injectable } from "inversify";
 import "reflect-metadata";
 import { EntityNotFoundError } from "typeorm";
 @injectable()
-export class BaseRepository<T extends any> implements IRepository<T> {
+export class BaseRepository<T extends any> implements IBaseRepository<T> {
   protected _model;
   constructor(model: any) {
     this._model = model;

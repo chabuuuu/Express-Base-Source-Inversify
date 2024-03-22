@@ -1,4 +1,8 @@
 {
+    "server": {
+        "port":  3000,
+        "host": "localhost"
+    },
     "request-limit": {
         "limit": "100kb"
     },
@@ -9,5 +13,6 @@
     },
     "helmet": false,
     "enviroment": "default",
-    "morganFormat": "dev"
+    "morganFormat": "dev",
+    "API_VERSION": "/api/v1"
 }

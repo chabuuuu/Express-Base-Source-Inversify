@@ -1,19 +1,21 @@
-import { IController } from "@/controller/base/i.controller";
+import { IRoleController } from "@/controller/interface/i.role.account.controller";
 import { RoleController } from "@/controller/role.controller";
 import { AppDataSource } from "@/database/db.datasource";
 import { Role } from "@/models/role.model";
-import { IRepository } from "@/repository/base/i.repository";
+import { IRoleRepository } from "@/repository/interface/i.role.repository";
 import { RoleRepository } from "@/repository/role.repository";
-import { IService } from "@/service/base/i.service";
+import { IRoleService } from "@/service/interface/i.role.service";
 import { RoleService } from "@/service/role.service";
 import { ITYPES } from "@/types/interface.types";
 import { Container } from "inversify";
 
 const roleContainer = new Container();
-roleContainer.bind<IService<any>>(ITYPES.Service).to(RoleService)
-roleContainer.bind<IRepository<Role>>(ITYPES.Repository).to(RoleRepository)
-roleContainer.bind<IController<any>>(ITYPES.Controller).to(RoleController)
+roleContainer.bind<IRoleService<any>>(ITYPES.Service).to(RoleService)
+roleContainer.bind<IRoleRepository<Role>>(ITYPES.Repository).to(RoleRepository)
+roleContainer.bind<IRoleController<any>>(ITYPES.Controller).to(RoleController)
 roleContainer.bind(ITYPES.Datasource).toConstantValue(AppDataSource)
 
-const roleController = roleContainer.get<IController<any>>(ITYPES.Controller)
-export default roleController
+const roleController = roleContainer.get<IRoleController<any>>(ITYPES.Controller)
+const roleService = roleContainer.get<IRoleService<any>>(ITYPES.Service)
+
+export {roleController, roleService}

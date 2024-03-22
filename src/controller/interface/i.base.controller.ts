@@ -1,4 +1,4 @@
-export interface IController<T> {
+export interface IBaseController<T> {
     findOne(req: any, res: any, next: any): Promise<T>;
     findAll(req: any, res: any, next: any): Promise<any>;
     create(req: any, res: any, next: any): Promise<T>;

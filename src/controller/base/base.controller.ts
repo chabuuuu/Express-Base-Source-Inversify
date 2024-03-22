@@ -1,14 +1,12 @@
-import { IController } from "@/controller/base/i.controller";
-import { IService } from "@/service/base/i.service";
-import { ITYPES } from "@/types/interface.types";
-import { inject, injectable } from "inversify";
+import { IBaseController } from "@/controller/interface/i.base.controller";
+import { injectable } from "inversify";
 
 
 @injectable()
-export class BaseController implements IController<any>{
-    protected service: IService<any>;
+export class BaseController implements IBaseController<any>{
+    protected service: any;
     public constructor(
-        @inject(ITYPES.Service) service: IService<any>
+        service: any
     ) {
         this.service = service;
     }

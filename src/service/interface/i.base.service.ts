@@ -1,4 +1,4 @@
-export interface IService<T> {
+export interface IBaseService<T> {
     create(data: any): Promise<T>;
     update(params: any): Promise<T>;
     delete(params: any): Promise<T>;
